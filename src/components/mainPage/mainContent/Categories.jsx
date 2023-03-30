@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Sort } from "./Sort";
 
 export const Categories = ({ items }) => {
+
   const [activeItem, setActiveItem] = useState(null);
-  // const onSelectItem = (index) => {
-  //   setActiveItem(index);
-  // };
+
   return (
     <div className="content__top">
       <div className="categories">

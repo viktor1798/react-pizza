@@ -1,26 +1,15 @@
 import React from "react";
-import { Categories } from "./Categories";
-import { PizzaBlock } from "./PizzaBlock";
+import { Route, Routes } from "react-router-dom";
+import { CardBasket } from "../../cardBasket/CardBasket";
+import { Content } from "./Content";
 
 export const MainContent = () => {
-  const categoryArr = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
-
   return (
-    <div className="content">
-      <div className="container">
-        <Categories items={categoryArr}/>
-        <h2 className="content__title">Все пиццы</h2>
-        <div className="content__items">
-          <PizzaBlock />
-        </div>
-      </div>
+    <div>
+      <Routes>
+        <Route path="/" element={<Content/>}/>
+        <Route path="/cart" element={<CardBasket />} />
+      </Routes>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonAddPizza } from "./ButtonAddPizza";
+import { ButtonSizeSelection } from "./ButtonSizeSelection";
 
 export const PizzaBlock = () => {
   return (
@@ -10,17 +11,7 @@ export const PizzaBlock = () => {
         alt="Pizza"
       />
       <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-      <div className="pizza-block__selector">
-        <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
-        </ul>
-        <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
-        </ul>
-      </div>
+      <ButtonSizeSelection/>
       <ButtonAddPizza/>
     </div>
   );
