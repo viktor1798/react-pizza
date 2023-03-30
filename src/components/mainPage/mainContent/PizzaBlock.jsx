@@ -1,5 +1,5 @@
 import React from "react";
-import addPlusImg from '../../../assets/add-pluse.svg'
+import { ButtonAddPizza } from "./ButtonAddPizza";
 
 export const PizzaBlock = () => {
   return (
@@ -21,14 +21,7 @@ export const PizzaBlock = () => {
           <li>40 см.</li>
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от 395 ₽</div>
-        <div className="button button--outline button--add">
-          <img src={addPlusImg} alt="" />
-          <span>Добавить</span>
-          <i>2</i>
-        </div>
-      </div>
+      <ButtonAddPizza/>
     </div>
   );
 };

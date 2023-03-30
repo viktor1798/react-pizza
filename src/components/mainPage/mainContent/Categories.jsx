@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sort } from "./Sort";
 
-export const Categories = () => {
+export const Categories = ({ items }) => {
+  const [activeItem, setActiveItem] = useState(null);
+  // const onSelectItem = (index) => {
+  //   setActiveItem(index);
+  // };
   return (
     <div className="content__top">
       <div className="categories">
         <ul>
-          <li className="active">Все</li>
-          <li>Мясные</li>
-          <li>Вегетарианская</li>
-          <li>Гриль</li>
-          <li>Острые</li>
-          <li>Закрытые</li>
+          {items &&
+            items.map((name, index) => (
+              <li
+                className={activeItem === index ? "active" : ""}
+                onClick={() => setActiveItem(index)}
+                key={index}
+              >
+                {name}
+              </li>
+            ))}
         </ul>
       </div>
       <Sort />
