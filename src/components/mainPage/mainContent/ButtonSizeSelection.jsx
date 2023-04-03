@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 export const ButtonSizeSelection = () => {
-  const [active, setActive] = useState(0);
+  const [activeDough, setActiveDough] = useState(0);
+  const [activeSize, setActiveSize] = useState(0);
   const itemsSize = [26, 30, 40];
   const itemsDough = ["тонкое", "традиционное"];
 
@@ -11,17 +12,21 @@ export const ButtonSizeSelection = () => {
         {itemsDough &&
           itemsDough.map((name, index) => (
             <li
-              className={active === index ? "active" : ""}
-              onClick={() => setActive(index)}
+              className={activeDough === index ? "active" : ""}
+              onClick={() => setActiveDough(index)}
               key={index}
             >{name}</li>
           ))}
 
       </ul>
       <ul>
-        <li className="active">26 см.</li>
-        <li>30 см.</li>
-        <li>40 см.</li>
+        {itemsSize&& itemsSize.map((name,index)=>(
+          <li
+          className={activeSize === index ? "active" : ""}
+              onClick={() => setActiveSize(index)}
+              key={index}
+          >{`${name} см.`}</li>
+        ))}
       </ul>
     </div>
   );

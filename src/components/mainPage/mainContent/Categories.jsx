@@ -3,7 +3,7 @@ import { Sort } from "./Sort";
 
 export const Categories = ({ items }) => {
 
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState(0);
 
   return (
     <div className="content__top">

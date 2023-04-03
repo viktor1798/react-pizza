@@ -1,5 +1,4 @@
 import { BrowserRouter } from "react-router-dom";
-import { CardBasket } from "./components/cardBasket/CardBasket";
 import { Header } from "./components/mainPage/header/Header";
 import { MainContent } from "./components/mainPage/mainContent/MainContent";
 
