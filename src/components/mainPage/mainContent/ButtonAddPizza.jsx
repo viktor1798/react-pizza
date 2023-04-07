@@ -1,12 +1,12 @@
 import addPlusImg from "../../../assets/add-pluse.svg";
 import React, { useState } from "react";
 
-export const ButtonAddPizza = () => {
+export const ButtonAddPizza = ({price}) => {
   let [count, setCount] = useState(0);
 
   return (
     <div className="pizza-block__bottom">
-      <div className="pizza-block__price">от 395 ₽</div>
+      <div className="pizza-block__price">{`от ${price} ₽`}</div>
       <div
         onClick={() => setCount(++count)}
         className="button button--outline button--add"
