@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import arrowTop from "../../../assets/arrow-top.svg";
 
-export const Sort = () => {
-  const items = ["популярности", "цене", "алфавиту"];
+import { connect } from "react-redux";
+
+const Sort = (props) => {
 
   const [visibleSort, setVisibleSort] = useState(false);
   const sortRef = useRef();
   const [activeItem, setActiveItem] = useState(0);
 
-  const activeSpanLabel = items[activeItem];
+  const activeSpanLabel = props.items[activeItem];
 
   const handleOutsideClick = (el) => {
     if (!el.composedPath().includes(sortRef.current)) {
@@ -24,6 +25,8 @@ export const Sort = () => {
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
   }, []);
+
+  
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">
@@ -34,8 +37,8 @@ export const Sort = () => {
       {visibleSort && (
         <div className="sort__popup">
           <ul>
-            {items &&
-              items.map((name, index) => (
+            {props.items &&
+              props.items.map((name, index) => (
                 <li
                   className={activeItem === index ? "active" : ""}
                   onClick={() => selectItem(index)}
@@ -50,3 +53,11 @@ export const Sort = () => {
     </div>
   );
 };
+
+const mapStateToProps=(state)=>{
+  return{
+    items: state.sort.category
+  }
+}
+
+export default connect(mapStateToProps)(Sort)

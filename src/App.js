@@ -2,7 +2,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/mainPage/header/Header";
 import { MainContent } from "./components/mainPage/mainContent/MainContent";
 import { useEffect } from "react";
-import { pizzasApi } from "./api/api";
 import { connect } from "react-redux";
 import { setPizzas } from "./redux/reducers/pizzas-reducer";
 import axios from "axios";

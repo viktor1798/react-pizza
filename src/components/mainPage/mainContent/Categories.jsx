@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Sort } from "./Sort";
+
+import Sort from './Sort'
 
 export const Categories = ({ items }) => {
 
@@ -21,7 +22,7 @@ export const Categories = ({ items }) => {
             ))}
         </ul>
       </div>
-      <Sort />
+    <Sort/>
     </div>
   );
 };
