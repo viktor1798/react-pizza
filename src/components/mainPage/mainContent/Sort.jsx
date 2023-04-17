@@ -9,7 +9,7 @@ const Sort = (props) => {
   const sortRef = useRef();
   const [activeItem, setActiveItem] = useState(0);
 
-  const activeSpanLabel = props.items[activeItem];
+  const activeSpanLabel = props.items[activeItem].name;
 
   const handleOutsideClick = (el) => {
     if (!el.composedPath().includes(sortRef.current)) {
@@ -38,13 +38,13 @@ const Sort = (props) => {
         <div className="sort__popup">
           <ul>
             {props.items &&
-              props.items.map((name, index) => (
+              props.items.map((obj, index) => (
                 <li
                   className={activeItem === index ? "active" : ""}
                   onClick={() => selectItem(index)}
-                  key={index}
+                  key={`${obj.type}_${index}`}
                 >
-                  {name}
+                  {obj.name}
                 </li>
               ))}
           </ul>
@@ -56,7 +56,7 @@ const Sort = (props) => {
 
 const mapStateToProps=(state)=>{
   return{
-    items: state.sort.category
+    items: state.sort.itemsSort
   }
 }
 

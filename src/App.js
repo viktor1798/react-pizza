@@ -4,11 +4,13 @@ import { MainContent } from "./components/mainPage/mainContent/MainContent";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setPizzas } from "./redux/reducers/pizzas-reducer";
-import axios from "axios";
+import { pizzasApi } from "./api/api";
 
 function App(props) {
+  console.log(props)
+
   useEffect(() => {
-    axios.get('http://localhost:3000/data-base-pizza.json').then(({ data }) => props.setPizzas(data.pizzas));
+    pizzasApi.getPizzas().then(({ data }) => props.setPizzas(data.pizzas));
   }, []);
 
 
