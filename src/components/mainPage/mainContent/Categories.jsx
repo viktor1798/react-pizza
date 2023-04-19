@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Sort from './Sort'
+import SortContainer from "./SortContainer";
 
 export const Categories = ({ items }) => {
 
@@ -22,7 +23,8 @@ export const Categories = ({ items }) => {
             ))}
         </ul>
       </div>
-    <Sort/>
+    <SortContainer/>
+    {/* <Sort/> */}
     </div>
   );
 };

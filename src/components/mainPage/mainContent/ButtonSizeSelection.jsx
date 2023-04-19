@@ -15,7 +15,7 @@ export const ButtonSizeSelection = ({sizes, types}) => {
     setActiveDough(index)
   }
 
-
+debugger
   return (
     <div className="pizza-block__selector">
       <ul>
@@ -31,12 +31,15 @@ export const ButtonSizeSelection = ({sizes, types}) => {
       <ul>
         {itemsSize.map((size,index)=>(
           <li
-          className={classNames({ active : activeSize===index, disabled: !sizes.includes(size)})}
+          className={classNames({ active : activeSize===size || activeSize===index, disabled: !sizes.includes(size)})}
               onClick={() => onSelectSize(index)}
               key={size}
           >{`${size} см.`}</li>
+          
         ))}
       </ul>
+      
     </div>
   );
+
 };

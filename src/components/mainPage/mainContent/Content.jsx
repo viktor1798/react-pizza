@@ -2,15 +2,7 @@ import React from "react";
 import { Categories } from "./Categories";
 import { PizzaBlock } from "./PizzaBlock";
 
-export const Content = ({pizzas}) => {
-  const categoryArr = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
+export const Content = ({pizzas, categoryArr}) => {
 
   return (
     <div className="content">
