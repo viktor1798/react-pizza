@@ -1,7 +1,7 @@
 import React from "react";
 import { pizzasApi } from "../../../api/api";
 import { useEffect } from "react";
-import { setPizzas } from "../../../redux/reducers/pizzas-reducer";
+import { getDataPizzas, setPizzas } from "../../../redux/reducers/pizzas-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { MainContent } from "./MainContent";
@@ -17,7 +17,7 @@ const MainContentContainer = (props) => {
   ];
   
   useEffect(() => {
-    pizzasApi.getPizzas().then(({ data }) => props.setPizzas(data.pizzas));
+    pizzasApi.getPizzas().then(({ data }) => props.getDataPizzas(data.pizzas));
   }, []);
 
   return (
@@ -27,14 +27,6 @@ const MainContentContainer = (props) => {
   );
 };
 
-let mapDispathToProps = (dispatch) => {
-  return {
-    setPizzas: (items) => {
-      dispatch(setPizzas(items));
-    },
-  };
-};
-
 let mapStateToProps = (state) => {
   return {
     dataPizzas: state.pizzas.items,
@@ -42,5 +34,5 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispathToProps)(React.memo(MainContentContainer))
+  connect(mapStateToProps, {getDataPizzas})(React.memo(MainContentContainer))
 );

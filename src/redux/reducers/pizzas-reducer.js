@@ -29,4 +29,11 @@ export const setPizzas = (items) => {
 };
 
 
+export const getDataPizzas = (items) => {
+  return (dispatch)=>{
+      dispatch(setPizzas(items));
+  };
+};
+
+
 export default pizzasReduser;
