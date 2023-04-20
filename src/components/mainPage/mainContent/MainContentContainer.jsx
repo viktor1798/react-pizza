@@ -7,22 +7,15 @@ import { connect } from "react-redux";
 import { MainContent } from "./MainContent";
 
 const MainContentContainer = (props) => {
-  const categoryArr = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
+  
   
   useEffect(() => {
-    pizzasApi.getPizzas().then(({ data }) => props.getDataPizzas(data.pizzas));
+    props.getDataPizzas(props.category)
   }, []);
 
   return (
     <div>
-      <MainContent categoryArr={categoryArr} pizzas={props.dataPizzas} />
+      <MainContent pizzas={props.dataPizzas} />
     </div>
   );
 };
@@ -30,6 +23,7 @@ const MainContentContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     dataPizzas: state.pizzas.items,
+    category: state.filter.category,
   };
 };
 

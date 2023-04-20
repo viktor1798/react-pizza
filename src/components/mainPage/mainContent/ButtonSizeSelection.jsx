@@ -15,7 +15,6 @@ export const ButtonSizeSelection = ({sizes, types}) => {
     setActiveDough(index)
   }
 
-debugger
   return (
     <div className="pizza-block__selector">
       <ul>

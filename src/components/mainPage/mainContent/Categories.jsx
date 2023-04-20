@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-import Sort from './Sort'
+
 import SortContainer from "./SortContainer";
 
-export const Categories = ({ items }) => {
-
-  const [activeItem, setActiveItem] = useState(0);
+export const Categories = ({ items,setStateCategory,category }) => {
 
   return (
     <div className="content__top">
@@ -14,8 +12,8 @@ export const Categories = ({ items }) => {
           {items &&
             items.map((name, index) => (
               <li
-                className={activeItem === index ? "active" : ""}
-                onClick={() => setActiveItem(index)}
+                className={category === index ? "active" : ""}
+                onClick={() => setStateCategory(index)}
                 key={index}
               >
                 {name}
@@ -24,7 +22,6 @@ export const Categories = ({ items }) => {
         </ul>
       </div>
     <SortContainer/>
-    {/* <Sort/> */}
     </div>
   );
 };

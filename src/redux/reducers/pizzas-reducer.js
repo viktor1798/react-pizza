@@ -1,3 +1,6 @@
+import axios from "axios";
+import { pizzasApi } from "../../api/api";
+
 const SET_PIZZAS = "SET_PIZZAS";
 
 let initialState = {
@@ -28,12 +31,12 @@ export const setPizzas = (items) => {
   };
 };
 
-
-export const getDataPizzas = (items) => {
-  return (dispatch)=>{
-      dispatch(setPizzas(items));
+export const getDataPizzas = (category) => {
+  return (dispatch) => {
+    pizzasApi
+      .getPizzas(category).then(({ data }) => dispatch(setPizzas(data.pizzas)));
+      
   };
 };
-
 
 export default pizzasReduser;

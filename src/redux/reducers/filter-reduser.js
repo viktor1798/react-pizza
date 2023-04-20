@@ -1,45 +1,47 @@
-const SET_SORT_BY = 'SET_SORT_BY'
-const SET_CATEGORY = 'SET_CATEGORY'
+const SET_SORT_BY = "SET_SORT_BY";
+const SET_CATEGORY = "SET_CATEGORY";
 
 let initialState = {
-    category:0,
-    sortBy:'popular'
-}
+  category: 0,
+//   sortBy: { type: "popular", order: "desc" },
+};
 
-const sortReduser = (state = initialState, action)=>{
+const sortReduser = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        category: action.catCategory,
+      };
+    // case "SET_SORT_BY":
+    //   return {
+    //     ...state,
+    //     sortBy: action.sortBy,
+    //   };
 
-    switch (action.type) {
-        case 'SET_CATEGORY':
-            return{
-                ...state,
-                category: action.catCategory
-            }
-        case 'SET_SORT_BY':
-            return{
-                ...state,
-                sortBy: action.sortBy
-            }
+    default:
+      break;
+  }
+  return state;
+};
 
+export const setCategory = (catCategory) => {
+  return {
+    type: SET_CATEGORY,
+    catCategory,
+  };
+};
+// export const setSortBy = (name) => {
+//   return {
+//     type: SET_SORT_BY,
+//     name,
+//   };
+// };
 
-        default:
-            break;
+export const setStateCategory= (index)=>{
+    return (dispatch)=>{
+        dispatch(setCategory(index))
     }
-    return state;
 }
-
-
-export const setCategory =(catCategory)=>{
-    return{
-    type:SET_CATEGORY,
-    catCategory
-}
-}
-export const setSortBy =(name)=>{
-    return{
-    type:SET_SORT_BY,
-    name
-}
-}
-
 
 export default sortReduser;

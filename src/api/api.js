@@ -5,7 +5,7 @@ const instanse = axios.create({
 })
 
 export const pizzasApi ={
-    getPizzas(){
-        return instanse.get('http://localhost:3000/data-base-pizza.json')
+    getPizzas(category){
+        return instanse.get(`http://localhost:3000/data-base-pizza.json?${category !== 0 ? `category=${category}` : ''}`)
     },
 }
