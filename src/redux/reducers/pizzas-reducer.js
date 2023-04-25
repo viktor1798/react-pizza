@@ -34,7 +34,7 @@ export const setPizzas = (items) => {
 export const getDataPizzas = (category) => {
   return (dispatch) => {
     pizzasApi
-      .getPizzas(category).then(({ data }) => dispatch(setPizzas(data.pizzas)));
+      .getPizzas(category).then(({ data }) => dispatch(setPizzas(data)));
       
   };
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { pizzasApi } from "../../../api/api";
 import { useEffect } from "react";
 import { getDataPizzas, setPizzas } from "../../../redux/reducers/pizzas-reducer";
 import { compose } from "redux";
@@ -11,7 +10,7 @@ const MainContentContainer = (props) => {
   
   useEffect(() => {
     props.getDataPizzas(props.category)
-  }, []);
+  }, [props.category]);
 
   return (
     <div>
