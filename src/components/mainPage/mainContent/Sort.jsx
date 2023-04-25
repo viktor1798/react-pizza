@@ -1,8 +1,7 @@
 import React from "react";
 import arrowTop from "../../../assets/arrow-top.svg";
 
-const Sort = ({activeItem,items,sortRef, visibleSort, activeSpanLabel, selectItem, setVisibleSort}) => {
-  
+const Sort = ({sortBy,items,sortRef, visibleSort, activeSpanLabel, selectItem, setVisibleSort}) => {
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">
@@ -15,9 +14,10 @@ const Sort = ({activeItem,items,sortRef, visibleSort, activeSpanLabel, selectIte
           <ul>
             {items &&
              items.map((obj, index) => (
+              
                 <li
-                  className={activeItem === index ? "active" : ""}
-                  onClick={() => selectItem(index)}
+                  className={sortBy === obj.type ? "active" : ""}
+                  onClick={() => selectItem(obj)}
                   key={`${obj.type}_${index}`}
                 >
                   {obj.name}

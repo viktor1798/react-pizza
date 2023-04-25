@@ -1,15 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Sort from "./Sort";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { setStateSortBy } from "../../../redux/reducers/sort-reducer";
 
-const SortContainer = (props) => {
+const SortContainer = ({items, sortBy, setStateSortBy}) => {
 
   const [visibleSort, setVisibleSort] = useState(false);
   const sortRef = useRef();
-  const [activeItem, setActiveItem] = useState(0);
-
-  const activeSpanLabel = props.items[activeItem].name;
+  const activeSpanLabel = items.find((obj)=>obj.type === sortBy.type).name;
 
   const handleOutsideClick = (el) => {
     if (!el.composedPath().includes(sortRef.current)) {
@@ -17,11 +16,16 @@ const SortContainer = (props) => {
     }
   };
 
+  const setStateSortByCallback =useCallback((type)=>setStateSortBy(type))
+
   const selectItem = (i) => {
-    setActiveItem(i);
+    if(setStateSortByCallback){
+      setStateSortByCallback(i)
+    }
     setVisibleSort(false);
   };
 
+  
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
   }, []);
@@ -29,15 +33,16 @@ const SortContainer = (props) => {
   
   return (
     <>
-     <Sort activeItem={activeItem} items={props.items} sortRef={sortRef} visibleSort={visibleSort} activeSpanLabel={activeSpanLabel} selectItem={selectItem} setVisibleSort={setVisibleSort}/>
+     <Sort  sortBy={sortBy.type} items={items} sortRef={sortRef} visibleSort={visibleSort} activeSpanLabel={activeSpanLabel} selectItem={selectItem} setVisibleSort={setVisibleSort}/>
     </>
   );
 };
 
 const mapStateToProps=(state)=>{
   return{
+    sortBy: state.sort.sortBy,  
     items: state.sort.itemsSort
   }
 }
 
-export default compose (connect(mapStateToProps)(React.memo(SortContainer)))
+export default compose (connect(mapStateToProps, {setStateSortBy})(React.memo(SortContainer)))

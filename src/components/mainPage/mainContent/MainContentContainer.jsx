@@ -9,8 +9,8 @@ const MainContentContainer = (props) => {
   
   
   useEffect(() => {
-    props.getDataPizzas(props.category)
-  }, [props.category]);
+    props.getDataPizzas(props.category,props.sortBy)
+  }, [props.category,props.sortBy]);
 
   return (
     <div>
@@ -23,6 +23,7 @@ let mapStateToProps = (state) => {
   return {
     dataPizzas: state.pizzas.items,
     category: state.filter.category,
+    sortBy: state.sort.sortBy,
   };
 };
 

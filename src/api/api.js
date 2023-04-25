@@ -5,7 +5,9 @@ const instanse = axios.create({
 })
 
 export const pizzasApi ={
-    getPizzas(category){
-        return instanse.get(`http://localhost:3100/pizzas?${category !== 0 ? `category=${category}` : ''}`)
+    getPizzas(category, sortBy){
+        return instanse.get(`http://localhost:3100/pizzas?${category !== 0 ? `category=${category}` : ''}&_sort=${
+            sortBy.type
+          }&_order=${sortBy.order}`)
     },
 }

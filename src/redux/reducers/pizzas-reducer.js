@@ -31,10 +31,10 @@ export const setPizzas = (items) => {
   };
 };
 
-export const getDataPizzas = (category) => {
+export const getDataPizzas = (category, sortBy) => {
   return (dispatch) => {
     pizzasApi
-      .getPizzas(category).then(({ data }) => dispatch(setPizzas(data)));
+      .getPizzas(category,sortBy).then(({ data }) => dispatch(setPizzas(data)));
       
   };
 };
