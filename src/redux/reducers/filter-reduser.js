@@ -1,4 +1,3 @@
-const SET_SORT_BY = "SET_SORT_BY";
 const SET_CATEGORY = "SET_CATEGORY";
 
 let initialState = {

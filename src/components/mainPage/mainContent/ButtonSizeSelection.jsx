@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
-export const ButtonSizeSelection = ({sizes, types}) => {
-  const [activeDough, setActiveDough] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0]);
+export const ButtonSizeSelection = ({sizes, types,itemsSize,itemsDough,activeDough,activeSize,setActiveSize,setActiveDough}) => {
 
-  const itemsSize = [26, 30, 40];
-  const itemsDough = ["тонкое", "традиционное"];
 
   const onSelectSize=(index)=>{
     setActiveSize(index)

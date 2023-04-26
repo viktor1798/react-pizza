@@ -1,4 +1,3 @@
-import axios from "axios";
 import { pizzasApi } from "../../api/api";
 
 const SET_PIZZAS = "SET_PIZZAS";

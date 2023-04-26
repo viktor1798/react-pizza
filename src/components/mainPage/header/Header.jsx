@@ -1,15 +1,15 @@
 import React from "react";
 
 
-import { HeaderCard } from "./HeaderCard";
 import { HeaderLogo } from "./HeaderLogo";
+import HeaderCardContainer from "./HeaderCardContainer";
 
 export const Header = () => {
   return (
     <div className="header">
       <div className="container">
         <HeaderLogo/>
-        <HeaderCard/>
+        <HeaderCardContainer/>
       </div>
     </div>
   );
