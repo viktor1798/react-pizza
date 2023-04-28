@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { getDataPizzas, setPizzas } from "../../../redux/reducers/pizzas-reducer";
+import { getDataPizzas } from "../../../redux/reducers/pizzas-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { MainContent } from "./MainContent";
@@ -14,7 +14,7 @@ const MainContentContainer = (props) => {
 
   return (
     <div>
-      <MainContent pizzas={props.dataPizzas} />
+      <MainContent itemsCard={props.itemsCard} pizzas={props.dataPizzas} />
     </div>
   );
 };
@@ -24,6 +24,7 @@ let mapStateToProps = (state) => {
     dataPizzas: state.pizzas.items,
     category: state.filter.category,
     sortBy: state.sort.sortBy,
+    itemsCard: state.card.items
   };
 };
 

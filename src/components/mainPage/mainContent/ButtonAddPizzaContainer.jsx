@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ButtonAddPizza } from "./ButtonAddPizza";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { addPizzaToCardState } from "../../../redux/reducers/card-reduser";
 
-const ButtonAddPizzaContainer = ({name,id, sizes ,price ,types, imageUrl,itemsSize,itemsDough,activeDough,activeSize}) => {
+const ButtonAddPizzaContainer = ({name,id ,price , imageUrl,itemsDough,activeDough,activeSize,addCount,addPizzaToCardState}) => {
+    
   const onAddPizza = ()=>{
     const obj={
       id,
       name,
       imageUrl,
       price,
-      types:itemsDough[activeDough],
-      sizes: itemsSize[activeSize],
+      type:itemsDough[activeDough],
+      size: activeSize,
     }
-    addPizzaToCardState(obj);
+    addPizzaToCardState(obj)
   }
   return (
     <>
-     <ButtonAddPizza/>
+     <ButtonAddPizza addCount={addCount} onAddPizzaCallback={onAddPizza} price={price}/>
     </>
   );
 };
