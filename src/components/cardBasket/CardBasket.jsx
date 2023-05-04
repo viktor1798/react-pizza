@@ -1,8 +1,9 @@
 import React from "react";
-import { CardItem } from "./CardIten";
+import { CardItem } from "./CardItem";
 import { NavLink } from "react-router-dom";
 import { BlankCard } from "./BlankCard";
 import { useDispatch, useSelector } from "react-redux";
+import { cleanCard, minusCardItem, plusCardItem, removeCard } from "../../redux/reducers/card-reduser";
 
 export const CardBasket = () => {
   //hooks 
@@ -13,10 +14,31 @@ export const CardBasket = () => {
     return items[key].items[0]
   })
 
+  const onCleanCart=()=>{
+    if(window.confirm("Вы действительно хотите отчистить корзину?")){
+      dispatch(cleanCard())
+    }
+  }
+
+  const onRemoveItems=(id)=>{
+    if(window.confirm("Вы действительно хотите удалить пиццу?")){
+      dispatch(removeCard(id))
+    }
+  }
+
+  const onMinusItems=(id)=>{
+      dispatch(minusCardItem(id))
+  }
+
+  const onPlusItems=(id)=>{
+      dispatch(plusCardItem(id))
+  }
+
 
 return (
 <div className="content">
       <div className="container container--cart">
+        {totalCount?(
         <div className="cart">
           <div className="cart__top">
             <h2 className="content__title">
@@ -50,7 +72,7 @@ return (
               </svg>
               Корзина
             </h2>
-            <div className="cart__clear">
+            <div className="cart__clear" onClick={onCleanCart}>
               <svg
                 width="20"
                 height="20"
@@ -91,7 +113,7 @@ return (
             </div>
           </div>
           <div className="content__items">
-            {addingPizzas.map((obj)=>(<CardItem key={obj.id} id={obj.id} name={obj.name} type={obj.type} size={obj.size}/>))}
+            {addingPizzas.map((obj)=>(<CardItem onRemoveItems={onRemoveItems} onPlusItems={onPlusItems} onMinusItems={onMinusItems}key={obj.id} totalCount={items[obj.id].items.length} totalPrice={items[obj.id].totalPrice} id={obj.id} name={obj.name} type={obj.type} size={obj.size}/>))}
           
           </div>
           <div className="cart__bottom">
@@ -129,8 +151,8 @@ return (
               </div>
             </div>
           </div>
-          {/* <BlankCard/> */}
-        </div>
+        </div>):(
+           <BlankCard/>)}
       </div>
     </div>  );
 };
