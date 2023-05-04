@@ -2,6 +2,7 @@ import addPlusImg from "../../../assets/add-pluse.svg";
 import React, { useState } from "react";
 
 export const ButtonAddPizza = ({price,onAddPizzaCallback,addCount}) => {
+  console.log(addCount)
   return (
     <div className="pizza-block__bottom">
       <div className="pizza-block__price">{`от ${price} ₽`}</div>
@@ -11,7 +12,7 @@ export const ButtonAddPizza = ({price,onAddPizzaCallback,addCount}) => {
       >
         <img src={addPlusImg} alt="" />
         <span>Добавить</span>
-        {addCount && <i>{addCount.length }</i>}
+        {addCount && <i>{addCount }</i>}
       </div>
     </div>
   );

@@ -4,12 +4,11 @@ import { ButtonSizeSelection } from "./ButtonSizeSelection";
 import ButtonAddPizzaContainer from "./ButtonAddPizzaContainer"
 
 export const PizzaBlock = ({imageUrl, name, sizes, price, types, id,addCount}) => {
-  
-  const itemsSize = [26, 30, 40];
   const itemsDough = ["тонкое", "традиционное"];
+  const itemsSize = [26, 30, 40];
 
   const [activeDough, setActiveDough] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const [activeSize, setActiveSize] = useState(0);
   return (
     <div className="pizza-block">
       <img

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { addPizzaToCardState } from "../../../redux/reducers/card-reduser";
 
-const ButtonAddPizzaContainer = ({name,id ,price , imageUrl,itemsDough,activeDough,activeSize,addCount,addPizzaToCardState}) => {
+const ButtonAddPizzaContainer = ({name,id ,price , itemsSize,imageUrl,itemsDough,activeDough,activeSize,addCount,addPizzaToCardState}) => {
     
   const onAddPizza = ()=>{
     const obj={
@@ -13,7 +13,7 @@ const ButtonAddPizzaContainer = ({name,id ,price , imageUrl,itemsDough,activeDou
       imageUrl,
       price,
       type:itemsDough[activeDough],
-      size: activeSize,
+      size: itemsSize[activeSize],
     }
     addPizzaToCardState(obj)
   }
