@@ -11,7 +11,7 @@ export const Content = ({pizzas,itemsCard}) => {
         <CategoriesContainer />
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
-          {pizzas.map((items)=> <PizzaBlock addCount={itemsCard[items.id]|| itemsCard.length} key={items.id} {...items} />)}
+          {pizzas.map((items)=> <PizzaBlock addCount={itemsCard[items.id] && itemsCard[items.id].items.length} key={items.id} {...items} />)}
         </div>
       </div>
     </div>
