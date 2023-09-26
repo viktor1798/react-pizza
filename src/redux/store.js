@@ -1,19 +1,11 @@
-import {applyMiddleware, combineReducers, legacy_createStore as createStore} from "redux"; 
-import thunk from "redux-thunk";
-import pizzas from "./reducers/pizzas-reducer";
-import sort from "./reducers/sort-reducer";
-import filter from './reducers/filter-reduser'
-import card from './reducers/card-reduser'
+import { configureStore } from '@reduxjs/toolkit'
+import filterSlice from './slice/filterSlice'
+import cardSlice from './slice/cardSlice'
 
-
-let reduser = combineReducers({
-    pizzas,
-    sort,
-    filter,
-    card
+export const store = configureStore({
+  reducer: {
+    filter:filterSlice,
+    card: cardSlice,
+      
+  },
 })
-
-let store = createStore(reduser,applyMiddleware(thunk))
-
-
-export default store;
